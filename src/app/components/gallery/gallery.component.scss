@@ -1,0 +1,54 @@
+.gallery-container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+.header{
+  min-height: 20px;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 2px;
+}
+.image{
+  height: 90%;
+  border-radius: 25px;
+}
+
+.demo-paginator{
+  background-color: rgba(255, 255, 255, 0.729);
+}
+.title{
+  font-family: 'Dela Gothic One', cursive;
+  font-size:  xxx-large;
+}
+
+.button-top{
+  display: flex;
+  justify-content: flex-end;
+  padding: 4px;
+}
+
+.search-bar{
+  padding: 4px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Media query per tablet */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  /* Aggiungi stili specifici per i tablet qui */
+  .title{
+    font-size: xx-large;
+  }
+}
+
+/* Media query per smartphone */
+@media screen and (max-width: 767px) {
+  /* Aggiungi stili specifici per gli smartphone qui */
+  .title{
+    font-size: x-large;
+  }
+}

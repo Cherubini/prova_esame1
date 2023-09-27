@@ -1,0 +1,35 @@
+<div class="header">
+  <img class="image" src="assets/guten.webp" alt="">
+  <span class="title">Gutenberg Project</span>
+</div>
+<div class="search-bar">
+  <mat-form-field >
+    <mat-label>search here</mat-label>
+    <input matInput type="text" [(ngModel)]="query" (input)="onSearch()">
+    <button *ngIf="query" matSuffix aria-label="Clear" (click)="resetSearch()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+  <mat-paginator #paginator
+    class="demo-paginator mat-primary"
+    (page)="handlePageEvent($event)"
+    [length]="length"
+    [pageSize]="pageSize"
+    [showFirstLastButtons]="showFirstLastButtons"
+    [hidePageSize]="hidePageSize"
+    aria-label="Select page">
+  </mat-paginator>
+
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+<div class="gallery-container">
+  <div *ngFor="let book of books">
+    <app-book-card *ngIf="book" [book]="book"></app-book-card>
+  </div>
+</div>
+<span>{{error}}</span>
+<div *ngIf="books" class="button-top">
+  <button mat-raised-button (click)="scrollToTop()" >scroll to top</button>
+</div>

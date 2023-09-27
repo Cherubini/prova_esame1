@@ -1,0 +1,14 @@
+<div class="card-container">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>{{book.title}}</mat-card-title>
+      <mat-card-subtitle>by <span *ngFor="let author of book.authors">{{author.name}} </span></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <span><b> about:</b></span>
+      <div *ngFor="let subject of book.subjects">{{subject}}</div>
+      <div><b>Languages available:</b></div>
+      <div *ngFor="let language of book.languages">{{language}}</div>
+    </mat-card-content>
+  </mat-card>
+</div>
