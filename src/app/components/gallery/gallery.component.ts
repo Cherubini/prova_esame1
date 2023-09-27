@@ -41,12 +41,14 @@ export class GalleryComponent {
 
     if(e.previousPageIndex==null || e.pageIndex===e.previousPageIndex+1)
       {
+      this.loading=true;
       this.dataServ.getBooks(this.dataServ.pageInfo.next).subscribe({
           next: data=>  {
                         this.books=data;
                         console.log(this.dataServ.pageInfo.next);
 
                         console.log(this.books);
+                        this.loading=false;
 
                         },
           error: err => console.log(err),
@@ -54,9 +56,12 @@ export class GalleryComponent {
       }
      else if(e.pageIndex===e.previousPageIndex-1)
       {
-        this.dataServ.getBooks(this.dataServ.pageInfo.previous).subscribe({
+    this.loading=true;
+    this.dataServ.getBooks(this.dataServ.pageInfo.previous).subscribe({
           next: data=>  {
+
                         this.books=data;
+                        this.loading=false;
 
                         },
           error: err => console.log(err),
@@ -64,15 +69,19 @@ export class GalleryComponent {
        }
       else if(e.pageIndex===Math.floor(this.length/this.pageSize))
        {
+        this.loading=true;
           this.dataServ.getBooks(this.dataServ.BASE_URL+'?page='+Math.floor(this.length/this.pageSize+1)+'&search='+this.query).subscribe({
-           next: data=> this.books=data,
+           next: data=>{ this.books=data;
+            this.loading=false;},
            error: err => console.log(err),
          })
        }
       else if(e.pageIndex===0)
        {
+        this.loading=true;
           this.dataServ.getBooks(this.dataServ.BASE_URL+'?page=1'+'&search='+this.query).subscribe({
-           next: data=> this.books=data,
+           next: data=> {this.books=data;
+            this.loading=false;},
            error: err => console.log(err),
          })
        }
